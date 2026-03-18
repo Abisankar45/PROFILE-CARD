@@ -1,0 +1,366 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 50%, #0a0a0a 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+/* BACKGROUND GLOW */
+.background-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #ff009640 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulse 4s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* CARD */
+.profile-card {
+    width: 330px;
+    background: #0a0a14d9;
+    backdrop-filter: blur(12px);
+    border-radius: 30px;
+    padding: 0;
+    box-shadow: 0 0 50px #ff00964d,
+        0 0 100px #00ffff33;
+    border: 2px solid #ff009659;
+    overflow: hidden;
+    animation: cardFloat 3s ease-in-out infinite;
+    color: white;
+    position: relative;
+    z-index: 5;
+}
+
+@keyframes cardFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* HEADER */
+.header {
+    height: 280px;
+    background: linear-gradient(135deg, #ff0080 0%, #ff00ff 50%, #00ffff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: visible;
+}
+
+/* ORBIT ICONS */
+.orbit-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 260px;
+    height: 260px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.orbit-ring {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 50%;
+    animation: spin 12s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.skill {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.skill:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.skill img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px #ff00ff);
+    transition: filter 0.3s ease;
+}
+
+.skill:hover img {
+    filter: drop-shadow(0 0 20px #ff00ff);
+}
+
+/* AVATAR */
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff0080, #ff00ff);
+    padding: 3px;
+    box-shadow: 0 0 35px rgba(255, 0, 150, 0.8),
+        0 0 60px rgba(0, 255, 255, 0.6);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    cursor: pointer;
+    transition: box-shadow 0.5s ease-out, transform 0.5s ease-out;
+    animation: avatarEntrance 0.8s ease-out forwards;
+}
+
+.avatar:hover {
+    box-shadow: 0 0 50px rgba(255, 0, 150, 1),
+        0 0 80px rgba(0, 255, 255, 0.8);
+    transform: scale(1.05);
+}
+
+.avatar img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+/* CONTENT */
+.content {
+    padding: 30px 25px;
+    text-align: center;
+}
+
+.name {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ff0080, #00ffff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.role {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff00ff;
+    margin-bottom: 8px;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.handle {
+    color: #00ffffc7;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.bio {
+    color: #b0b0b0;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* SOCIAL ICONS */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 0, 150, 0.12);
+    border: 2px solid rgba(255, 0, 150, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    background-color: rgba(255, 0, 150, 0.3);
+    box-shadow: 0 0 12px #ff00ff, inset 0 0 12px rgba(255, 0, 150, 0.2);
+    transform: scale(1.15) translateY(-5px);
+    border-color: #ff00ff;
+}
+
+.social-icon img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px #ff00ff);
+    transition: filter 0.3s ease;
+}
+
+.social-icon:hover img {
+    filter: drop-shadow(0 0 12px #ff00ff);
+}
+
+/* BUTTONS */
+.button-group {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #ff0080, #00ffff);
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 0, 150, 0.3);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: btnEntrance 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    pointer-events: none;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #ff33a6, #33ffff);
+    box-shadow: 0 0 30px rgba(255, 0, 150, 0.7),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+    transform: scale(1.05) translateY(-2px);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Entrance Animations */
+@keyframes avatarEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes btnEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+    .profile-card {
+        width: 100%;
+        max-width: 330px;
+        margin: 0 20px;
+    }
+
+    .header {
+        height: 250px;
+    }
+
+    .orbit-container {
+        width: 220px;
+        height: 220px;
+    }
+
+    .content {
+        padding: 25px 20px;
+    }
+
+    .name {
+        font-size: 24px;
+    }
+
+    .role {
+        font-size: 16px;
+    }
+
+    .btn {
+        padding: 11px 18px;
+        font-size: 13px;
+    }
+}
